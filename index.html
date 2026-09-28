@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MegaMart - Online Shopping</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f5f5;color:#222}
+header{background:#2874f0;color:#fff;padding:15px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:28px;font-weight:bold}.search{flex:1;max-width:550px}
+.search input{width:100%;padding:12px 18px;border:0;border-radius:4px;font-size:15px}
+.cart{background:#fff;color:#2874f0;padding:10px 18px;border-radius:5px;cursor:pointer;font-weight:bold}
+nav{background:#fff;padding:15px;text-align:center;box-shadow:0 2px 5px #0002}
+nav a{text-decoration:none;color:#333;margin:0 20px;font-weight:bold}
+.banner{margin:20px 6%;padding:55px 20px;text-align:center;background:linear-gradient(120deg,#2874f0,#6fa3ff);color:#fff;border-radius:10px}
+.banner h1{font-size:42px;margin-bottom:12px}.banner p{font-size:18px;margin-bottom:20px}
+.shop{padding:12px 28px;border:0;border-radius:5px;background:#fff;color:#2874f0;font-weight:bold;cursor:pointer}
+.categories,.products{padding:25px 6%}.categories h2,.products h2{text-align:center;margin-bottom:25px}
+.category-box{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.category{background:#fff;padding:20px 30px;border-radius:8px;box-shadow:0 2px 8px #0002;cursor:pointer}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}
+.product{background:#fff;padding:18px;text-align:center;border-radius:8px;box-shadow:0 2px 8px #0002;transition:.3s}
+.product:hover{transform:translateY(-5px)}.product img{width:160px;height:170px;object-fit:contain}
+.product h3{margin:12px 0}.price{color:#2874f0;font-size:20px;font-weight:bold;margin:10px}
+button{cursor:pointer}.add,.buy{color:#fff;border:0;padding:10px 18px;border-radius:5px;font-weight:bold}
+.add{background:#ff9f00}.buy{background:#fb641b;margin-left:5px}
+footer{background:#172337;color:#fff;text-align:center;padding:30px;margin-top:20px}
+@media(max-width:700px){header{flex-direction:column}.search{width:100%}.banner h1{font-size:30px}nav a{margin:5px;display:inline-block}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🛍️ MegaMart</div>
+<div class="search"><input id="search" placeholder="Search for products..." onkeyup="searchProducts()"></div>
+<div class="cart" onclick="showCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+</header>
+
+<nav>
+<a href="#home">Home</a><a href="#categories">Categories</a><a href="#products">Products</a><a href="#contact">Contact</a>
+</nav>
+
+<section class="banner" id="home">
+<h1>Welcome to MegaMart</h1>
+<p>Everything you need, all in one place!</p>
+<button class="shop" onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
+</section>
+
+<section class="categories" id="categories">
+<h2>Shop By Category</h2>
+<div class="category-box">
+<div class="category">📱 Mobiles</div><div class="category">💻 Electronics</div>
+<div class="category">👕 Fashion</div><div class="category">🏠 Home</div><div class="category">🎧 Accessories</div>
+</div>
+</section>
+
+<section class="products" id="products">
+<h2>Popular Products</h2>
+<div class="product-grid">
+
+<div class="product"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"><h3>Smartphone</h3><p>Latest Android Smartphone</p><div class="price">₹24,999</div><button class="add" onclick="addToCart('Smartphone')">Add to Cart</button><button class="buy" onclick="buyNow('Smartphone')">Buy Now</button></div>
+
+<div class="product"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"><h3>Laptop</h3><p>Powerful Laptop for Students</p><div class="price">₹54,999</div><button class="add" onclick="addToCart('Laptop')">Add to Cart</button><button class="buy" onclick="buyNow('Laptop')">Buy Now</button></div>
+
+<div class="product"><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400"><h3>Wireless Headphones</h3><p>Premium Sound Quality</p><div class="price">₹2,999</div><button class="add" onclick="addToCart('Wireless Headphones')">Add to Cart</button><button class="buy" onclick="buyNow('Wireless Headphones')">Buy Now</button></div>
+
+<div class="product"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"><h3>Smart Watch</h3><p>Fitness & Smart Features</p><div class="price">₹3,999</div><button class="add" onclick="addToCart('Smart Watch')">Add to Cart</button><button class="buy" onclick="buyNow('Smart Watch')">Buy Now</button></div>
+
+<div class="product"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"><h3>Sports Shoes</h3><p>Comfortable Running Shoes</p><div class="price">₹1,999</div><button class="add" onclick="addToCart('Sports Shoes')">Add to Cart</button><button class="buy" onclick="buyNow('Sports Shoes')">Buy Now</button></div>
+
+<div class="product"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400"><h3>Fashion Jacket</h3><p>Stylish Casual Jacket</p><div class="price">₹2,499</div><button class="add" onclick="addToCart('Fashion Jacket')">Add to Cart</button><button class="buy" onclick="buyNow('Fashion Jacket')">Buy Now</button></div>
+
+</div>
+</section>
+
+<footer id="contact"><h3>MegaMart</h3><p>Online Shopping Made Easy</p><br><p>© 2026 MegaMart. All Rights Reserved.</p></footer>
+
+<script>
+let cart=[];
+function addToCart(product){cart.push(product);document.getElementById("cartCount").innerText=cart.length;alert(product+" added to cart!")}
+function showCart(){alert(cart.length?"Your Cart:\n\n"+cart.join("\n"):"Your cart is empty.")}
+function buyNow(product){alert("You selected "+product+" for purchase!")}
+function searchProducts(){let q=document.getElementById("search").value.toLowerCase();document.querySelectorAll(".product").forEach(p=>p.style.display=p.querySelector("h3").innerText.toLowerCase().includes(q)?"block":"none")}
+</script>
+</body>
+</html>
